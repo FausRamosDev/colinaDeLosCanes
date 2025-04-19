@@ -1,0 +1,74 @@
+main {
+    background-color: rgb(30, 30, 30);
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tit-ingresar {
+    width: 100vw;
+    height: 20vh;
+    color: white;
+    font-size: 4vh;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10vh;
+}
+
+.form-ingreso {
+    width: 50vw;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(40, 40, 40);
+    margin-bottom: 10vh;
+    border-radius: 32px;
+}
+
+label, input, button {
+    margin: 2vh 0;
+}
+
+label {
+    color: white;
+    font-size: 3vh;
+    font-weight: 600;
+}
+
+input {
+    width: 50%;
+    height: 10%;
+    font-size: 1rem;
+    color: white;
+    background-color: rgb(50, 50, 50);
+    border: 1px solid rgb(70, 70, 70);
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: var(--amarillo);
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    background-color: var(--verde);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.boton:hover {
+    transform: scale(1.1);
+    background-color: rgb(20, 150, 20);
+}

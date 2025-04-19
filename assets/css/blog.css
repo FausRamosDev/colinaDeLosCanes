@@ -1,0 +1,107 @@
+body {
+    background-color: rgb(30, 30, 30);
+}
+
+main {
+    position: relative;
+    left: 15vw;
+    max-width: 70vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1, h3, .comerciales, .artesanales {
+    color: white;
+    font-weight: 600;
+    font-family: "Finlandica", sans-serif;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+h1, .comerciales, .artesanales {
+    font-size: 4vh;
+}
+
+h3 {
+    font-size: 3vh;
+}
+
+p {
+    width: 50%;
+    height: 100%;
+    color: white;
+    margin: 3vh 3vw;
+    text-align: justify;
+}
+
+article {
+    display: flex;
+    flex-direction: row;
+}
+
+.comerciales {
+    color: red;
+}
+
+.artesanales {
+    color: green;
+}
+
+.div-imagen {
+    margin: 0 10vw;
+}
+
+.div-imagenes {
+    margin-bottom: 5vh;
+}
+
+.p-final-blog {
+    width: 100%;
+    font-weight: 600;
+    font-size: 2.5vh;
+    color: var(--verde);
+    margin-bottom: 10vh;
+}
+
+@media screen and (max-width: 768px) {
+
+    main {
+        z-index: -1;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 4vh;
+        text-align: center;
+    }
+
+    .img-blog-inicio {
+        width: 80vw;
+    }
+
+    p {
+        width: 100%;
+        margin: 2vh auto;
+    }
+
+    .p-solo {
+        margin-top: 7vh;
+    }
+
+    article {
+        flex-direction: column;
+    }
+
+    .div-imagen {
+        margin-top: 3vh;
+    }
+
+    .p-final-blog {
+        margin-top: 10vh;
+    }
+}

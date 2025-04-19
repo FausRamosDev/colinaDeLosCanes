@@ -1,0 +1,58 @@
+<div class="carrusel">
+    <h3 class="tit-carrusel">¿Que opinan nuestros clientes?</h3>
+    <div class="carousel">
+        <div class="carousel-inner">
+        </div>
+        <button class="prev" id="prevButton">&#10094;</button>
+        <button class="next" id="nextButton">&#10095;</button>
+    </div>
+</div>
+
+<script>
+    $(document).ready(() => {
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-inner div');
+        let totalSlides;
+
+            if (window.innerWidth < 1024) {
+                totalSlides = slides.length;
+            } else {
+                totalSlides = Math.ceil(slides.length / 2);
+            }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarouselPosition();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarouselPosition();
+        }
+
+        function autoSlide() {
+            nextSlide();
+        }
+
+        function updateCarouselPosition() {
+            const offset = -currentSlide * 100;
+            document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
+        }
+
+        let interval = setInterval(autoSlide, 5000);
+
+        document.querySelector('.carousel').addEventListener('mouseenter', () => {
+            clearInterval(interval);
+        });
+
+        document.querySelector('.carousel').addEventListener('mouseleave', () => {
+            interval = setInterval(autoSlide, 5000);
+        });
+
+        $(document).on("click", "#prevButton", prevSlide);
+        $(document).on("click", "#nextButton", nextSlide);
+
+        calculateTotalSlides();
+        updateCarouselPosition();
+    });
+</script>

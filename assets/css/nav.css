@@ -1,0 +1,148 @@
+.menu {
+  display: flex;
+}
+
+.menu-adaptable {
+  display: none;
+}
+
+.menu {
+  position: fixed;
+  width: 100vw;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--amarillo);
+  z-index: 1;
+}
+
+.iconografia-logo {
+  width: 10vh;
+  filter: brightness(1.1);
+  mix-blend-mode: multiply;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  margin-right: 5vw;
+  margin-left: 5vw;
+  list-style: none;
+}
+
+li {
+  margin: 0 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li a {
+  position: relative;
+  padding: 0.5vh 0.5vw;
+  color: black;
+  text-align: center;
+}
+
+li a span {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: var(--verde);
+  color: white;
+  font-size: 1.2vh;
+  font-weight: bold;
+  padding: 0.2em 0.5em;
+  border-radius: 50%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+a:hover {
+  transform: scale(1.1);
+  transition: 0.2s ease-in-out;
+}
+
+.button-icon-list {
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  border: none;
+}
+
+.button-icon-list:hover {
+  cursor: pointer;
+}
+
+.icon-list {
+  color: white;
+  font-size: 8vh;
+  font-weight: 600;
+}
+
+/* Menu adaptable */
+
+@media screen and (max-width: 1248px) {
+  .menu {
+    display: none;
+  }
+
+  .menu-adaptable {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: auto;
+    z-index: 5;
+  }
+
+  .menu-bar {
+    margin: 5vh;
+    z-index: 10;
+    height: 5vh;
+  }
+
+  .menu-adaptable-ul {
+    margin: 0;
+    height: 91vh;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    list-style: none;
+    justify-content: center;
+    z-index: 4;
+  }
+
+  .menu-adaptable ul li {
+    margin: 2vh 0 0 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu-adaptable ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    font-size: 220%;
+    font-weight: 400;
+  }
+
+  .menu-adaptable ul li a:hover {
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+  }
+}
+
+@media screen and (max-width: 768px) {
+    .icon-list {
+        color: var(--amarillo);
+        font-size: 5vh;
+        font-weight: 600;
+      }
+}

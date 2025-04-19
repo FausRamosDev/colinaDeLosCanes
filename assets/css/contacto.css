@@ -1,0 +1,139 @@
+main {
+    width: 100vw;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(30, 30, 30);
+}
+
+.tit-contacto {
+    width: 100%;
+    height: auto;
+    padding: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--verde);
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+}
+
+.div-correo {
+    width: 90%;
+    max-width: 600px;
+    padding: 2rem;
+    margin-top: 2rem;
+    background-color: rgb(40, 40, 40);
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.tit-correo {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+}
+
+/* Formulario y campos */
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: white;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 1vh 0;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: white;
+    background-color: rgb(50, 50, 50);
+    border: 1px solid rgb(70, 70, 70);
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--amarillo);
+}
+
+textarea {
+    resize: none;
+    height: 15vh;
+}
+
+.boton-enviar-correo {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    background-color: var(--verde);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.boton-enviar-correo:hover {
+    background-color: rgb(20, 150, 20);
+}
+
+/* Estilo para el modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 80%;
+    font-size: 1.2rem;
+}
+
+.modal-content p {
+    margin: 0;
+    color: #333;
+    font-weight: bold;
+}
+
+.modal-content button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--verde);
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: rgb(20, 150, 20);
+}

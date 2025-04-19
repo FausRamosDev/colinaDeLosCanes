@@ -1,0 +1,122 @@
+* {
+    color: white;
+}
+
+body {
+    width: 100vw;
+    height: auto;
+    background-color: rgb(40, 40, 40);
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    padding: 0;
+}
+
+.article-logo {
+    width: 100vw;
+    height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background-color: var(--verde);
+}
+
+.logo {
+    margin: 5.5vh 0 0 5vh;
+    height: 170%;
+    mix-blend-mode: multiply;
+}
+
+.article-inicio {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 7vh;
+}
+
+h2 {
+    font-size: 7vh;
+    font-weight: 600;
+    margin-bottom: 5vh;
+}
+
+p {
+    width: 60%;
+    font-size: 5vh;
+    display: flex;
+    text-align: center;
+    margin-bottom: 7vh;
+}
+
+div {
+    background-color: rgb(25, 25, 25);
+    padding: 7vh;
+    border-radius: 24px;
+    margin-bottom: 10vh;
+}
+
+div, form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+label, input {
+    width: 40vw;
+}
+
+input {
+    margin: 3vh 0;
+    height: 7vh;
+    color: black;
+    font-size: 3vh;
+    font-weight: 400;
+    padding: 1vh 0.5vw;
+    color: white;
+    background-color: rgb(50, 50, 50);
+    border: 1px solid rgb(70, 70, 70);
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: var(--amarillo);
+}
+
+label {
+    font-size: 4vh;
+    font-weight: 600;
+    text-align: center;
+}
+
+button {
+    margin-top: 5vh;
+    width: 20vw;
+    height: 10vh;
+    background-color: var(--verde);
+    border: none;
+    border-radius: 8px;
+    font-size: 3.5vh;
+    font-weight: 600;
+    color: white;
+    transition: 0.3s;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: green;
+}
+
+a {
+    font-size: 3.5vh;
+    font-weight: 600; 
+}

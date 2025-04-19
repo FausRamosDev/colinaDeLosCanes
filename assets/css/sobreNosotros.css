@@ -1,0 +1,237 @@
+body {
+    background-color: rgb(30, 30, 30);
+}
+
+.tit-sobre-nosotros {
+    width: 100vw;
+    text-align: center;
+    color: white;
+    font-size: 5vh;
+    margin-top: 10vh;
+    font-weight: 600;
+}
+
+.div-titulo {
+    margin-top: 10vh;
+    background-color: green;
+    height: auto;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.tit-licores, .slogan {
+    font-family: "Finlandica", sans-serif;
+    color: var(--amarillo);
+    font-size: 4vh;
+    margin-top: 5vh;
+    font-weight: 600;
+}
+
+.slogan {
+    font-style: italic;
+    color: white;    
+}
+
+.p-titulo {
+    width: 40vw;
+    text-align: justify;
+    padding: 5vh;
+    color: white;
+}
+
+.img-rosario {
+    width: 40vw;
+    height: 45vh;
+    margin-right: 5vw;
+}
+
+.div-rosario {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-imagen-texto {
+    margin: 20vh 20vw;
+    width: 60vw;
+    height: 50vh;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.div-imagen {
+    height: 100%;
+    width: 50%;
+    overflow: hidden;
+}
+
+.imagen-licores {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.div-texto {
+    background-color: var(--amarillo-oscuro);
+    height: 100%;
+    width: 50%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tit-div-texto, .simple, .sofisticado {
+    margin-top: 5vh;
+    font-weight: 600;
+    width: 80%;
+    height: auto;
+    margin: 3vh 0;
+    font-family: "Finlandica", sans-serif;
+    color: white;
+    font-size: 4vh;
+    text-align: justify;
+}
+
+.simple {
+    position: relative;
+    color: red;
+}
+
+.simple::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 5px;
+    background-color: black;
+    transform: rotate(-15deg);    
+} 
+
+.sofisticado {
+    color: green;
+}
+
+.button-div-texto {
+    margin-top: auto;
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--verde);
+    border: none;
+    border-radius: 8px;
+    font-size: 2.5vh;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+
+.button-div-texto:hover {
+    background-color: #006400;
+    transform: scale(1.05);
+}
+
+/* .link-productos {
+    display: block;
+    /* text-decoration: none;
+    color: white;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: normal; 
+}
+
+.link-productos:hover {
+    transform: none;
+} */
+
+@media screen and (max-width: 768px) {
+
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .div-titulo {
+        width: 80vw;
+    }
+
+    .tit-licores {
+        width: 80%;
+        text-align: center;
+    }
+
+    .div-rosario {
+        flex-direction: column;
+    }
+
+    .img-rosario {
+        margin: 5vh 0 0 0;
+        width: 90%;
+    }
+
+    .p-titulo {
+        width: 90%;
+    }
+
+    .section-imagen-texto {
+        margin: 20vh 20vw;
+        width: 60vw;
+        height: 50vh;
+        border-radius: 24px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .div-imagen {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://img.freepik.com/fotos-premium/vista-angulo-alto-botellas-alcohol-superficie-madera_641503-342744.jpg");
+        background-size: cover;
+        background-position: center;
+        z-index: 1;
+        filter: brightness(50%);
+    }
+    
+    .div-texto {
+        z-index: 2;
+        position: relative;
+        background: transparent;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .tit-div-texto {
+        text-align: left;
+    }
+    
+    .sofisticado {
+        color: var(--verde);
+    }
+
+}

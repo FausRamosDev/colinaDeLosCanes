@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Licores colina de los canes</title>
+  <meta name="description"
+    content="Explora nuestra variedad de licores artesanales. Compra y reserva nuestros productos fácilmente. Calidad garantizada.">
+  <link rel="shortcut icon" type="img" href="../../assets/images/favicon.ico" type="img/x-icon" />
+  <meta name="author" content="Faustino Ramos" />
+  <script src="../../assets/js/jquery-3.7.1.min.js"></script>
+  <script src="../../assets/js/partials.js"></script>
+  <script src="../../assets/js/productos.js"></script>
+  <script src="../../assets/js/gestionarReviews.js"></script>
+  <link rel="stylesheet" href="../../assets/css/productos.css">
+  <link rel="stylesheet" href="../../assets/css/nav.css">
+  <link rel="stylesheet" href="../../assets/css/footer.css">
+  <link rel="stylesheet" href="../../assets/css/reviews.css">
+  <link rel="stylesheet" href="../../assets/css/global.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Poppins:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+  <div id="nav-container"></div>
+  <main>
+    <h1 class="tit-productos">Productos</h1>
+    <section class="prices-section">
+      <h1 class="prices-title">Medidas y Precios</h1>
+      <div class="price-box">
+        <p class="measure">200 ml</p>
+        <p class="price">$265</p>
+      </div>
+      <div class="price-box">
+        <p class="measure">250 ml</p>
+        <p class="price">$295</p>
+      </div>
+      <div class="price-box">
+        <p class="measure">700 ml</p>
+        <p class="price">$570</p>
+      </div>
+    </section>
+
+    <hr>
+
+    <section class="products-section"></section>
+
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <span class="close-popup" onclick="cerrarPopup()">x</span>
+        <h2 id="popup-title"></h2>
+        <p class="id-producto-popup"></p>
+        <select class="medida" name="" id="medida-select">
+          <option value="0" selected>...</option>
+          <option value="200">200 ml</option>
+          <option value="250">250 ml</option>
+          <option value="700">700 ml</option>
+        </select>
+        <div class="quantity-controller">
+          <button onclick="actualizarCantidad(-1)">-</button>
+          <span id="cantidad">1</span>
+          <button onclick="actualizarCantidad(1)">+</button>
+        </div>
+        <p id="popup-price"></p>
+        <button class="confirm-add">Añadir al carrito</button>
+      </div>
+    </div>
+  </main>
+
+  <div id="reviews-container"></div>
+  <div id="footer-container"></div>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Licores colina de los canes</title>
+    <meta name="description" content="Explora nuestra variedad de licores artesanales. Compra y reserva nuestros productos fácilmente. Calidad garantizada.">
+    <link rel="shortcut icon" type="img" href="../../assets/images/favicon.ico" type="img/x-icon"/>
+    <meta name="author" content="Faustino Ramos"/>
+    <script src="../../assets/js/jquery-3.7.1.min.js"></script>
+    <script src="../../assets/js/verificarSesion.js"></script>
+    <script src="../../assets/js/partials.js"></script>
+    <script src="../../assets/js/ingreso.js"></script>
+    <link rel="stylesheet" href="../../assets/css/nav.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
+    <link rel="stylesheet" href="../../assets/css/global.css">
+    <link rel="stylesheet" href="../../assets/css/perfil.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Poppins:wght@400;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="nav-container"></div>
+
+    <main>
+        <h2 class="tit-perfil">Perfil</h2>
+        <section>
+            <div class="div-perfil">
+                <div class="div-usuario">
+                    <label class="label-tit">Usuario</label>
+                    <label class="nombre-usuario">ejemplo</label>
+                </div>
+                <div class="div-contrasenia">
+                    <label class="label-tit">Contraseña</label>
+                    <label class="contrasenia">1234</label>
+                </div>
+            </div>
+            <button class="cerrar-sesion">Salir</button>
+        </section>
+    </main>
+
+
+    <div id="footer-container"></div>
+
+    <script>
+        let usuario = sessionStorage.getItem("usuario");
+        usuario = JSON.parse(usuario);
+
+        $(".nombre-usuario").html(usuario.usuario);
+        $(".contrasenia").html(usuario.contrasenia);
+    </script>
+</body>
+
+</html>

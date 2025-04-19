@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Licores colina de los canes</title>
+    <meta name="description"
+        content="Explora nuestra variedad de licores artesanales. Compra y reserva nuestros productos fácilmente. Calidad garantizada.">
+    <link rel="shortcut icon" type="img" href="../../assets/images/favicon.ico" type="img/x-icon" />
+    <meta name="author" content="Faustino Ramos" />
+    <script src="../../assets/js/jquery-3.7.1.min.js"></script>
+    <script src="../../assets/js/partials.js"></script>
+    <script src="../../assets/js/gestionarProductos.js"></script>
+    <script src="../../assets/js/gestionarReviews.js"></script>
+    <script src="../../assets/js/verificarSesion.js"></script>
+    <link rel="stylesheet" href="../../assets/css/gestionarProductos.css">
+    <link rel="stylesheet" href="../../assets/css/nav.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
+    <link rel="stylesheet" href="../../assets/css/reviews.css">
+    <link rel="stylesheet" href="../../assets/css/global.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Poppins:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div id="nav-container"></div>
+
+    <main>
+        <h1 class="tit-gestion-productos">Gestión de Productos</h1>
+
+        <section class="products-section"></section>
+        <button class="nuevo-producto" id="nuevo-producto">Nuevo producto...</button>
+        <button class="nuevo-producto" id="nueva-review">Nueva Review...</button>
+
+        <div class="popup" id="popup">
+            <div class="popup-content">
+                <span class="close-popup">x</span>
+                <h2 class="tit-nuevo-producto">Nuevo producto</h2>
+                <form id="producto-form" enctype="multipart/form-data">
+                    <label for="titulo">Título:</label>
+                    <input type="text" id="titulo" name="titulo" required>
+                    <label for="descripcion">Descripción:</label>
+                    <label><span class="contador-palabras">0</span>/270</label>
+                    <textarea id="descripcion" name="description" maxlength="270" required></textarea>
+                    <label for="imagen">Imagen:</label>
+                    <input type="file" id="imagen" name="imagen" accept="image/*" required>
+                    <button type="submit">Guardar Producto</button>
+                    <button type="button" class="boton-cancelar">Cancelar</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup-modificar" id="popup-modificar" style="display: none;">
+            <div class="popup-content">
+                <span class="close-popup">x</span>
+                <h2 class="tit-nuevo-producto">Modificar producto</h2>
+                <form id="producto-form-modificar" enctype="multipart/form-data">
+                    <label>ID: <span class="id-producto-modificar"></span></label>
+                    <label for="titulo-modificar">Título:</label>
+                    <input type="text" id="titulo-modificar" name="titulo"></input>
+                    <label for="descripcion-modificar">Descripción:</label>
+                    <label><span class="contador-palabras">0</span>/270</label>
+                    <textarea id="descripcion" name="description" maxlength="270"></textarea>
+                    <label for="imagen-modificar">Imagen:</label>
+                    <input type="file" id="imagen-modificar" name="imagen-modificar" accept="image/*">
+                    <button type="submit">Modificar Producto</button>
+                    <button type="button" class="boton-cancelar">Cancelar</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup-eliminar" id="popup-eliminar" style="display: none;">
+            <div class="popup-content">
+                <span class="close-popup">x</span>
+                <h2 class="tit-nuevo-producto">Está seguro/a que desea eliminar el producto?</h2>
+                <p>ID del producto: <span class="id-eliminar-producto"></span></p>
+                <div class="botones-eliminar-popup">
+                    <button class="confirmar-eliminar">Eliminar producto</button>
+                    <button class="boton-cancelar cancelar-eliminar">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup" id="popup-review">
+            <div class="popup-content">
+                <span class="close-popup">x</span>
+                <h2 class="tit-nuevo-producto">Nueva Review</h2>
+                <form id="producto-form">
+                    <label for="titulo">Nombre completo:</label>
+                    <input type="text" id="nombre" name="titulo" required>
+                    <label for="descripcion">Descripción:</label>
+                    <label><span class="contador-palabras-review">0</span>/100</label>
+                    <textarea id="descripcion-review" name="description" maxlength="100" required></textarea>
+                    <label for="imagen">Estrellas:</label>
+                    <select id="estrellas">
+                        <option value="" selected>...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <button type="button" class="boton-guardar-review">Guardar Review</button>
+                    <button type="button" class="boton-cancelar">Cancelar</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup-modificar" id="popup-modificar" style="display: none;">
+            <div class="popup-content">
+                <span class="close-popup">x</span>
+                <h2 class="tit-nuevo-producto">Modificar producto</h2>
+                <form id="producto-form-modificar" enctype="multipart/form-data">
+                    <label>ID: <span class="id-producto-modificar"></span></label>
+                    <label for="titulo-modificar">Título:</label>
+                    <input type="text" id="titulo-modificar" name="titulo"></input>
+                    <label for="descripcion-modificar">Descripción:</label>
+                    <label><span class="contador-palabras">0</span>/270</label>
+                    <textarea id="descripcion" name="description" maxlength="270"></textarea>
+                    <label for="imagen-modificar">Imagen:</label>
+                    <input type="file" id="imagen-modificar" name="imagen-modificar" accept="image/*">
+                    <button type="submit">Modificar Producto</button>
+                    <button type="button" class="boton-cancelar">Cancelar</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="reviews-container"></div>
+    <div id="footer-container"></div>
+</body>
+
+</html>

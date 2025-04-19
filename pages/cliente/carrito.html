@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Licores colina de los canes</title>
+  <meta name="description"
+    content="Explora nuestra variedad de licores artesanales. Compra y reserva nuestros productos fácilmente. Calidad garantizada.">
+  <link rel="shortcut icon" type="img" href="../../assets/images/favicon.ico" type="img/x-icon" />
+  <meta name="author" content="Faustino Ramos" />
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
+  <script src="../../assets/js/jquery-3.7.1.min.js"></script>
+  <script src="../../assets/js/partials.js"></script>
+  <script src="../../assets/js/gestionarReviews.js"></script>
+  <script src="../../assets/js/carrito.js"></script>
+  <script src="../../assets/js/compraReservaCarrito.js"></script>
+  <script src="../../assets/js/success.js"></script>
+  <link rel="stylesheet" href="../../assets/css/carrito.css">
+  <link rel="stylesheet" href="../../assets/css/nav.css">
+  <link rel="stylesheet" href="../../assets/css/footer.css">
+  <link rel="stylesheet" href="../../assets/css/reviews.css">
+  <link rel="stylesheet" href="../../assets/css/global.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Poppins:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div id="nav-container"></div>
+  <main>
+    <h1 class="tit-carrito">Carrito</h1>
+
+    <section class="products-section" id="products-section"></section>
+
+    <section class="section-final">
+      <h3 class="tit-precio-final">Precio final: $<span class="precio-final">0.00</span></h3>
+      <button class="reservar-productos">Reservar productos</button>
+      <div class="boton-mp">
+        <div id="wallet_container"></div>
+      </div>
+    </section>
+
+    <div class="popup-reserva" id="popup-reserva" style="display: none;">
+      <div class="popup-content">
+        <span class="close-popup cerrar-popup">x</span>
+        <h2 class="tit-reserva-popup">Reservar productos</h2>
+        <p class="p-reserva-popup">Esta opción te permite reservar los productos elegidos. Nos llegará una notificación
+          con los datos de
+          tu reserva y nos contactaremos contigo para concretar la compra.</p>
+        <h2 class="tit-reserva-popup">Ingrese sus datos</h2>
+        <form id="producto-form-reserva" enctype="multipart/form-data">
+          <label for="">Su nombre:</label>
+          <input class="input-nombre" type="text" required>
+
+          <label for="">Su telefono:</label>
+          <input class="input-telefono" type="text" required>
+
+          <label for="">Mensaje (opcional):</label>
+          <textarea class="input-mensaje" name="" id=""></textarea>
+
+          <button type="submit">Reservar productos</button>
+          <button type="button" class="boton-cancelar cerrar-popup">Cancelar</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup-modificar" id="popup-modificar" style="display: none;">
+      <div class="popup-content">
+        <span class="close-popup cerrar-popup">x</span>
+        <h2 class="tit-nuevo-producto">Modificar producto</h2>
+        <form id="producto-form-modificar" enctype="multipart/form-data">
+          <label>ID: <span class="id-producto-modificar"></span></label>
+          <label for="titulo-modificar">Título:</label>
+          <input type="text" id="titulo-modificar" name="titulo"></input>
+          <label for="descripcion-modificar">Descripción:</label>
+          <label><span class="contador-palabras">0</span>/270</label>
+          <textarea id="descripcion" name="description" maxlength="270"></textarea>
+          <label for="imagen-modificar">Imagen:</label>
+          <input type="file" id="imagen-modificar" name="imagen-modificar" accept="image/*">
+          <button type="submit">Modificar Producto</button>
+          <button type="button" class="boton-cancelar cerrar-popup">Cancelar</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="modalEnviando" class="modal" style="display: none;">
+      <div class="modal-content">
+        <p>Enviando...</p>
+      </div>
+    </div>
+  </main>
+
+  <div id="reviews-container"></div>
+  <div id="footer-container"></div>
+
+  <script>
+    const mp = new MercadoPago("", {
+      locale: "es-UY",
+    });
+
+    const enviarPago = (mp, preferencia) => {
+      mp.bricks().create("wallet", "wallet_container", {
+        initialization: {
+          preferenceId: preferencia.id,
+        },
+      });
+    }
+
+    const crearPreferencia = (productos) => {
+      let nombresProductos = "";
+      let cantidad = 0;
+      let precio = 0;
+      let id = 0;
+
+      for (let i = 0; i < productos.length; i++) {
+        if (nombresProductos == "") {
+          nombresProductos += `${productos[i].titulo}`;
+        } else {
+          nombresProductos += `, ${productos[i].titulo}`;
+        }
+
+        if (id == "") {
+          id += `${productos[i].id}`;
+        } else {
+          id += `, ${productos[i].id}`;
+        }
+
+        const key = sessionStorage.key(i);
+        const producto = JSON.parse(sessionStorage.getItem(key));
+
+        cantidad += producto.cantidad;
+        precio += producto.precio / producto.cantidad;
+      }
+
+      $.ajax({
+        type: "POST",
+        url: "../../backend/controllers/controlador.php",
+        data: {
+          funcionalidad: "comprarProductos",
+          id: id,
+          title: nombresProductos,
+          quantity: cantidad,
+          unit_price: precio,
+        },
+        success: (response) => {
+          try {
+            let respuesta = JSON.parse(response);
+            enviarPago(mp, respuesta);
+          } catch (e) {
+            console.log("Error al parsear el JSON: " + e);
+          }
+        },
+        error: (error) => {
+          console.error("Error con el servidor: " + error);
+        },
+      });
+    }
+
+    const obtenerProductos = (idProductos) => {
+      $.ajax({
+        type: "GET",
+        url: "../../backend/controllers/controlador.php",
+        data: {
+          funcionalidad: "gestionarProductos",
+          datos: { id: idProductos },
+        },
+        success: (response) => {
+          try {
+            let respuesta = JSON.parse(response);
+            if (respuesta) {
+              crearPreferencia(respuesta);
+            }
+          } catch (e) {
+            console.log("Error al parsear el JSON: " + e);
+          }
+        },
+        error: (e) => {
+          console.error("Error con el servidor: " + e);
+        }
+      })
+    }
+
+    const datos = () => {
+      const idProductos = [];
+      for (let i = 0; i < sessionStorage.length; i++) {
+        const key = sessionStorage.key(i);
+        const producto = JSON.parse(sessionStorage.getItem(key));
+        if (producto && producto.id) {
+          idProductos.push(producto.id);
+        }
+      }
+
+      $(".boton-mp").html("");
+      $(".boton-mp").html('<div id="wallet_container"></div>');
+
+      obtenerProductos(idProductos);
+    }
+
+    datos();
+
+  </script>
+</body>
+
+</html>
