@@ -22,7 +22,7 @@ PHP, MySql
 
 ## Capturas y demostración
 
-### [Deploy de la página](licorescolinadeloscanes.com) 
+### [Deploy de la página](https://www.licorescolinadeloscanes.com) 
 
 ![CaptureLicores](https://github.com/user-attachments/assets/1df9f716-628b-4a05-ab39-61ca7ff85a76)
 
